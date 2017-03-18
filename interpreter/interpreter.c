@@ -14,7 +14,7 @@ unsigned int CODESIZE = 0;
 // Global variable that indicates if the process is running.
 static bool is_running = true;
 
-void halt(void){    
+void halt(struct VMContext* ctx, const uint32_t instr){    
     is_running = false;
 }
 
@@ -81,7 +81,7 @@ void ite(struct VMContext * ctx, const uint32_t instr){
     a = EXTRACT_B1(instr);
     const uint8_t imm1 = EXTRACT_B2(instr);
     const uint8_t imm2 = EXTRACT_B3(instr);
-    ctx->pc = ctx->r[a].value > 0 ? CODE+4*(imm1-1) : CODE+4*(imm2-1);  
+    ctx->pc = ctx->r[a].value > 0 ? (uint32_t*)(CODE+4*(imm1-1)) : (uint32_t*)(CODE+4*(imm2-1));  
 }
 
 void jump(struct VMContext * ctx, const uint32_t instr){
@@ -93,7 +93,7 @@ void jump(struct VMContext * ctx, const uint32_t instr){
         printf("\nInvalid jump to line %d",imm1);
         exit(1);
     }    
-    ctx->pc = CODE+4*(imm1-1);    
+    ctx->pc = (uint32_t*)(CODE+4*(imm1-1));    
 }
 
 void put(struct VMContext* ctx, const uint32_t instr) {
