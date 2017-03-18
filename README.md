@@ -36,10 +36,10 @@ Modified
 - interpreter/interpreter.c : Add function for opcodes.
 - Makefile      : Add a set of rule to compile codes.
 
-# What I learend
+# What I learned
 
-I was able to learn how compiler works although some stuff is very cumbersome.
+I was able to learn how compiler works.
 
-Without OS, I should manage all of memory spaces (Heap, Code, Reg etc.).
+Without OS, I should manage all of memory spaces (Heap, Code, Reg etc.). It is very cumbersome.
 
-I spent a lot of time in engineering to do this project,so I learned how I can reduce time for debugging, making bytecode efficently.
+I spent a lot of time in engineering to do this project,so I learned how I can reduce time for debugging, making bytecode efficiently. 
