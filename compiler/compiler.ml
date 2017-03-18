@@ -36,8 +36,7 @@ let opcode_to_int = function
   | "jump" -> 0xb0
   | "puts" -> 0xc0
   | "gets" -> 0xd0
-  | "gcd" -> 0xe0 (*Add gcd opcode to handle manual function*)
-  | "je" -> 0xf0 (*Add je code to handle a conditinal jump efficiently*)
+  | "gcd" -> 0xe0 (*Add gcd opcode to handle manual function*)  
   | opcode -> failwith ("[Unreachable] type_check() should have handled this")
 
 type oprnd_typ = Reg | Imm
@@ -57,8 +56,7 @@ let get_operand_type line = function
   | "jump" -> [Imm]
   | "puts" -> [Reg]
   | "gets" -> [Reg]
-  | "gcd" -> [Reg; Reg; Reg] (*Add gcd opcode to handle manual function*)
-  | "je" -> [Reg; Imm] (*Add je code to handle a conditinal jump efficiently*)
+  | "gcd" -> [Reg; Reg; Reg] (*Add gcd opcode to handle manual function*)  
   | opcode -> error line ("Invalid opcode: " ^ opcode)
 
 let out_opcode oc opcode =

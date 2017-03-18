@@ -2,8 +2,16 @@
 test.mini file computes a GCD value of two input digits.
 To have a complicate operation, I modified the compiler a bit to add my own function.
 
-- Input  : Two digits. Enter a digit one by one due to type-check limits.
+- Input  : Two digits. Enter a digit one by one.
 - Output : A GCD value of two digits.
+
+Running example : 
+
+	Enter two positive integers (1-9) 
+	First : 3
+	Second : 5
+	Answer is : 1
+
 
 # gcd opcode description
 	
@@ -15,14 +23,14 @@ a gcd value will be stored in the memory value located at R1.
 
 # Pseudocode
 
-<<<<<<< 18420723e1e55786959fe065b02adef6da2c2dd3
-    #include <stdio.h>
+	#include <stdio.h>
     #include <stdlib.h>
 	void main(void){
 
-		unsigned int R1,R2,R3;
+		int R1,R2,R3;
+		int gcd = 1;
 
-		printf("Enter two positive integers (1-9)");
+		printf("Enter two positive integers (1-9)\n");
 
 		printf("First : ");
 		scanf("%d",&R1);
@@ -30,75 +38,24 @@ a gcd value will be stored in the memory value located at R1.
 		printf("Second : ");
 		scanf("%d",&R2);
 
-		R3 = gcd(R1,R2);
-		printf("Answer is %d\n",R3); 
-	}
+		if( R1 > 9 || R2 > 9){
+			printf("Type only one digit"); 	
+			exit(1);
+		}
 
-
-	// This function is called by opcode
-	//////////////////////////////////////////////////////////
-	void gcd(struct VMContext* ctx, const uint32_t instr) {
-	    const uint32_t a = EXTRACT_B1(instr);                
-	    const uint32_t b = EXTRACT_B2(instr);
-	    const uint32_t c = EXTRACT_B3(instr);          
-	    unsigned int R2 = HEAP[(ctx->r[b].value)] - 48;
-	    unsigned int R3 = HEAP[(ctx->r[c].value)] - 48;
-	    unsigned int gcd = 1;
-	    // If any of them is a zero value, do not compute gcd.
-	    if( (R2 | R3) == 0){
-		printf("Invalid value for gcd\n");
-		exit(1);
+		if( (R1 | R2) == 0){
+			printf("Invalid value for gcd\n");
+			exit(1);
 	    }
+	    
 	    //Compute GCD
-	    for(unsigned int i=2; (i <= R2 ) && (i<= R3) ; i++)
+	    for(int i=2; (i<= R1) && (i<= R2) ; i++)
 	    {        
-		if(R2%i==0 && R3%i==0)
-		    gcd = i;
-	    }      
-	    // Store a gcd value to the memory in the R1.
-	    HEAP[(ctx->r[a].value)] = gcd + 48;
+			if(R1%i==0 && R2%i==0)
+		   		gcd = i;		   	
+	    }    
+
+		R3 = gcd;
+		printf("Answer is : %d\n",R3); 
 	}
-	//////////////////////////////////////////////////////////////
-=======
-#include <stdio.h>
-#include <stdlib.h>
-void main(void){
-
-	unsigned int R1,R2,R3;
-	
-	printf("Enter two positive integers (1-9)");
-	
-	printf("First : ");
-	scanf("%d",&R1);
-
-	printf("Second : ");
-	scanf("%d",&R2);
-
-	R3 = gcd(R1,R2);
-	printf("Answer is %d\n",R3); 
-}
-
-
-// This function is called by opcode
-void gcd(struct VMContext* ctx, const uint32_t instr) {
-    const uint32_t a = EXTRACT_B1(instr);                
-    const uint32_t b = EXTRACT_B2(instr);
-    const uint32_t c = EXTRACT_B3(instr);          
-    unsigned int R2 = HEAP[(ctx->r[b].value)] - 48;
-    unsigned int R3 = HEAP[(ctx->r[c].value)] - 48;
-    unsigned int gcd = 1;
-    // If any of them is a zero value, do not compute gcd.
-    if( (R2 | R3) == 0){
-        printf("Invalid value for gcd\n");
-        exit(1);
-    }
-    //Compute GCD
-    for(unsigned int i=2; (i <= R2 ) && (i<= R3) ; i++)
-    {        
-        if(R2%i==0 && R3%i==0)
-            gcd = i;
-    }      
-    // Store a gcd value to the memory in the R1.
-    HEAP[(ctx->r[a].value)] = gcd + 48;
-}
->>>>>>> Make a login program.
+  
