@@ -1,10 +1,11 @@
 # IS-521 Activity 3
 
 This repository is for my activity 3.
+
 Two programs are executable.
 
-test.mini  - Refer to test.md
-login.mini - Works as a login program given by pseudocode.
+- test.mini  - Refer to test.md
+- login.mini - Works as a login program given by pseudocode.
              backdoor can be added by interpreter.
 
 # Usage
@@ -21,7 +22,7 @@ Running example
 	python execute.py login
 	python execute.py backdoor
 
-#File history
+# File history
 
 Added
 - backdoor/interpreter.c : Add backdoor routine.
