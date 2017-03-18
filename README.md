@@ -35,3 +35,11 @@ Modified
 - compiler/compiler.ml   : Add a gcd opcode.
 - interpreter/interpreter.c : Add function for opcodes.
 - Makefile      : Add a set of rule to compile codes.
+
+# What I learend
+
+I was able to learn how compiler works although some stuff is very cumbersome.
+
+Without OS, I should manage all of memory spaces (Heap, Code, Reg etc.).
+
+I spent a lot of time in engineering to do this project,so I learned how I can reduce time for debugging, making bytecode efficently.
