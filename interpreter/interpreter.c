@@ -146,6 +146,7 @@ void gcd(struct VMContext* ctx, const uint32_t instr) {
     HEAP[(ctx->r[a].value)] = gcd + 48;
 }
 
+
 void usageExit() {
     // TODO: show usage
     printf("Usage : ./interpreter FILE\n");

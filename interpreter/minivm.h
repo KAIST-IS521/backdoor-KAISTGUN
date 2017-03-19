@@ -19,9 +19,9 @@
 
 #define MVM_NUM_REGISTERS 256 // Default
 
-#define MAX_HEAP_SPACE 8192
+#define MAX_HEAP_SPACE 8193
 
-#define MAX_CODE_SPACE 8192
+#define MAX_CODE_SPACE 8193
 
 //---------------------------------------------------------
 // DATA STRUCTURES & TYPEDEFS:
